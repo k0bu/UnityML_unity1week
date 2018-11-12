@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MLAgents;
 
-public class Obstacle : MonoBehaviour {
+public class Obstacle : Agent {
 
 	public void GameOver() {
-		GameManager.instance.resultBG.SetActive(true);
-		GameManager.currentState = GameManager.GameState.SCOREVIEW;
+		Done();
+		SetReward(-1f);
 	}
 }

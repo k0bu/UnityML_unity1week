@@ -71,7 +71,8 @@ public class TileMapGenerator : MonoBehaviour {
 			if (randomCoord != mapCentre && MapIsFullyAccessible(obstacleMap, currentObstacleCount)) {
 				Vector3 obstaclePosition = CoordToPosition(randomCoord.x,randomCoord.y);
 
-				Transform newObstacle = Instantiate(obstaclePrefab, obstaclePosition + new Vector3( 0,obstaclePrefab.localScale.x * .5f,0), Quaternion.identity);
+				Transform newObstacle = Instantiate(obstaclePrefab, obstaclePosition 
+					+ new Vector3( 0,obstaclePrefab.localScale.x * .5f,0), Quaternion.identity);
 				newObstacle.localScale += new Vector3(-0.15f, Random.Range(3,8), -0.15f);
 				newObstacle.parent = mapHolder;
 			}
@@ -102,7 +103,9 @@ public class TileMapGenerator : MonoBehaviour {
 					int neighbourX = tile.x + x;
 					int neighbourY = tile.y + y;
 					if (x == 0 || y == 0) {
-						if (neighbourX >= 0 && neighbourX < obstacleMap.GetLength(0) && neighbourY >= 0 && neighbourY < obstacleMap.GetLength(1)) {
+						if (neighbourX >= 0 && neighbourX < obstacleMap.GetLength(0) 
+						&& neighbourY >= 0 
+						&& neighbourY < obstacleMap.GetLength(1)) {
 							if (!mapFlags[neighbourX,neighbourY] && !obstacleMap[neighbourX,neighbourY]) {
 								mapFlags[neighbourX,neighbourY] = true;
 								queue.Enqueue(new Coord(neighbourX,neighbourY));
