@@ -54,7 +54,7 @@ public class RiderAgent : Agent {
         switch (action)
         {
             case noAction:
-                AddReward(-.02f);
+                AddReward(-.015f);
                 // do nothing
                 break;
             case left:
@@ -137,7 +137,7 @@ public class RiderAgent : Agent {
 
 		if (other.GetComponent<PointSource>()){
             Debug.Log("point");
-            SetReward(1.2f);
+            SetReward(4f);
             pointCleared.Enqueue(other.gameObject);
             other.GetComponent<PointSource>().AddScore();
         }
@@ -147,7 +147,7 @@ public class RiderAgent : Agent {
             if (blockTest.Where(col => col.gameObject.CompareTag("pit")).ToArray().Length == 1){
                 Debug.Log("pit");
             Done();
-            SetReward(-10f);
+            SetReward(-20f);
             }
         }
 			
