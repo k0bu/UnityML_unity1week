@@ -23,9 +23,10 @@ public class TileMapGenerator : MonoBehaviour {
 	Coord mapCentre;
 	
 	public void StartGenerateMap(int gridSize, float percentObstacles, int numberPoint) {
-		var r = new System.Random();
-		seed = r.Next();
-		
+		// var r = new System.Random();
+		// seed = r.Next();
+		seed = 0;
+
 		mapSize.x = gridSize;
 		mapSize.y = gridSize;
 		obstaclePercent = percentObstacles;

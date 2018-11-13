@@ -49,17 +49,20 @@ public class RiderAgent : Agent {
 
 
     public override void AgentAction(float[] vectorAction, string textAction){
-        AddReward(0.01f);
+        AddReward(.01f);
         int action = Mathf.FloorToInt(vectorAction[0]);
         switch (action)
         {
             case noAction:
+                AddReward(-.02f);
                 // do nothing
                 break;
             case left:
+                AddReward(1f);
                 inputMinus = true;
                 break;
             case right:
+                AddReward(1f);
                 inputPlus = true;
                 break;
             default:
@@ -128,28 +131,26 @@ public class RiderAgent : Agent {
 
 	}
 
-    private void OnCollisionEnter(Collision other) {
+    private void OnTriggerEnter(Collider other) {
         //Debug.Log("CollisionEnter");
         Collider[] blockTest = Physics.OverlapBox(transform.position+transform.forward*.4f, new Vector3(0.3f, 0.3f, 0.3f));
 
-        if (blockTest.Where(col => col.gameObject.CompareTag("goal")).ToArray().Length == 1){
+		if (other.GetComponent<PointSource>()){
             Debug.Log("point");
-            SetReward(1f);
-        }
-        if (blockTest.Where(col => col.gameObject.CompareTag("pit")).ToArray().Length == 1){
-            Debug.Log("pit");
-            Done();
-            SetReward(-1f);
-        }
-
-		if (other.collider.GetComponent<PointSource>()){
+            SetReward(1.2f);
             pointCleared.Enqueue(other.gameObject);
-            other.collider.GetComponent<PointSource>().AddScore();
+            other.GetComponent<PointSource>().AddScore();
         }
 			
 
-		if(other.collider.GetComponent<Obstacle>())
-			other.collider.GetComponent<Obstacle>().GameOver();
+		if(other.GetComponent<Obstacle>()){
+            if (blockTest.Where(col => col.gameObject.CompareTag("pit")).ToArray().Length == 1){
+                Debug.Log("pit");
+            Done();
+            SetReward(-3f);
+            }
+        }
+			
 		
 	}
     
