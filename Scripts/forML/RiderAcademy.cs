@@ -18,9 +18,7 @@ public class RiderAcademy : Academy {
 	//Initializing the game world
 	private void SetEnvironment(){
 
-		instance.StartGenerateMap((int)resetParameters["gridSize"],
-			(float)resetParameters["percentObstacles"] ,
-			(int)resetParameters["numberPoint"] );
+		
 		
 		Player.transform.position = new Vector3(.5f,.6f,.5f);
 		Player.transform.rotation = Quaternion.identity;
@@ -30,6 +28,11 @@ public class RiderAcademy : Academy {
 	public override void InitializeAcademy(){
 		gridSize = (int)resetParameters["gridSize"];
 		instance = GetComponent<TileMapGenerator>();
+		
+		instance.StartGenerateMap((int)resetParameters["gridSize"],
+			(float)resetParameters["percentObstacles"] ,
+			(int)resetParameters["numberPoint"] );
+
 		SetEnvironment();
 
 

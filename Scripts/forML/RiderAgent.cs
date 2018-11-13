@@ -31,9 +31,12 @@ public class RiderAgent : Agent {
     private const int left = 1;
     private const int right = 2;
 
+    public Queue<GameObject> pointCleared;
+
     public override void InitializeAgent(){
         _rigidBody = GetComponent<Rigidbody>();
         academy = FindObjectOfType(typeof(RiderAcademy)) as RiderAcademy;
+        pointCleared = new Queue<GameObject>();
     }
 
     public override void CollectObservations(){
@@ -139,8 +142,11 @@ public class RiderAgent : Agent {
             SetReward(-1f);
         }
 
-		if (other.collider.GetComponent<PointSource>())
-			other.collider.GetComponent<PointSource>().AddScore();
+		if (other.collider.GetComponent<PointSource>()){
+            pointCleared.Enqueue(other.gameObject);
+            other.collider.GetComponent<PointSource>().AddScore();
+        }
+			
 
 		if(other.collider.GetComponent<Obstacle>())
 			other.collider.GetComponent<Obstacle>().GameOver();
@@ -154,6 +160,9 @@ public class RiderAgent : Agent {
     // to be implemented by the developer
     public override void AgentReset()
     {
+        for(int i = 0; i < pointCleared.Count; i++){
+            pointCleared.Dequeue().SetActive(true);
+        }
         academy.AcademyReset();
     }
 
