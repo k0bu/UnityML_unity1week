@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using MLAgents;
 using System;
 
@@ -25,21 +26,18 @@ public class RiderAgent : Agent {
 	private Quaternion rot;
 	private Vector3 targetMoveAmount;
 
-	private void Awake() {
-        _rigidBody = GetComponent<Rigidbody>();
-    }
-
 
     private const int noAction = 0;
     private const int left = 1;
     private const int right = 2;
 
     public override void InitializeAgent(){
+        _rigidBody = GetComponent<Rigidbody>();
         academy = FindObjectOfType(typeof(RiderAcademy)) as RiderAcademy;
     }
 
     public override void CollectObservations(){
-
+        AddVectorObs(gameObject.transform);
     }
 
 
@@ -89,13 +87,21 @@ public class RiderAgent : Agent {
     private void FixedUpdate() {
         WaitTimeInference();
 
+        Vector3 localMove = targetMoveAmount* Time.fixedDeltaTime;
 
-		if (GameManager.currentState != GameManager.GameState.PLAYING) return;
-        // Apply movement to rigidbody
-		
+        Collider[] blockTest = Physics.OverlapBox(_rigidBody.position + localMove, new Vector3(0.3f, 0.3f, 0.3f));
+
+        if (blockTest.Where(col => col.gameObject.CompareTag("goal")).ToArray().Length == 1){
+            SetReward(1f);
+        }
+        if (blockTest.Where(col => col.gameObject.CompareTag("pit")).ToArray().Length == 1){
+            Done();
+            SetReward(-1f);
+        }
+        	
         //Vector3 localMove = transform.TransformDirection(targetMoveAmount) * Time.fixedDeltaTime;
-		Vector3 localMove = targetMoveAmount* Time.fixedDeltaTime;
-        _rigidBody.MovePosition(_rigidBody.position + localMove);
+		_rigidBody.MovePosition(_rigidBody.position + localMove);
+        
 		
     }
 

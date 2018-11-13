@@ -7,13 +7,13 @@ public class TileMapGenerator : MonoBehaviour {
 	public Transform tilePrefab;
 	public Transform obstaclePrefab;
 	public Transform pointSourcePrefab;
-	public Vector2 mapSize;
-	public int pointSourceNumber;
+	private Vector2 mapSize;
+	private int pointSourceNumber;
 	
 	[Range(0,1)]
 	public float outlinePercent;
-	[Range(0,1)]
-	public float obstaclePercent;
+	//[Range(0,1)]
+	private float obstaclePercent;
 
 	List<Coord> allTileCoords;
 	Queue<Coord> shuffledTileCoords;
@@ -22,9 +22,14 @@ public class TileMapGenerator : MonoBehaviour {
 	private int seed;
 	Coord mapCentre;
 	
-	public void StartGenerateMap() {
+	public void StartGenerateMap(int gridSize, float percentObstacles, int numberPoint) {
 		var r = new System.Random();
 		seed = r.Next();
+		
+		mapSize.x = mapSize.y = gridSize;
+		obstaclePercent = percentObstacles;
+		pointSourceNumber = numberPoint;
+		
 		accessibleTileCoords = new Queue<Coord>();
 		GenerateMap ();
 		

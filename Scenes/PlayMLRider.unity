@@ -235,7 +235,7 @@ Camera:
   far clip plane: 1000
   field of view: 58
   orthographic: 1
-  orthographic size: 30
+  orthographic size: 32
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
@@ -351,7 +351,7 @@ RectTransform:
   m_Children:
   - {fileID: 1553342943}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -457,8 +457,8 @@ Camera:
   far clip plane: 1000
   field of view: 58
   orthographic: 1
-  orthographic size: 30
-  m_Depth: 1
+  orthographic size: 32
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -467,7 +467,7 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
-  m_AllowMSAA: 1
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
@@ -480,6 +480,26 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114296276157539986, guid: faf8269f0c11e934cb1956580c345b66,
+        type: 2}
+      propertyPath: agentParameters.agentCameras.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114997651866194130, guid: faf8269f0c11e934cb1956580c345b66,
+        type: 2}
+      propertyPath: agentParameters.agentCameras.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114314328120344366, guid: faf8269f0c11e934cb1956580c345b66,
+        type: 2}
+      propertyPath: agentParameters.agentCameras.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114798180114903518, guid: faf8269f0c11e934cb1956580c345b66,
+        type: 2}
+      propertyPath: agentParameters.agentCameras.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410146946971616, guid: faf8269f0c11e934cb1956580c345b66, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -510,7 +530,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4410146946971616, guid: faf8269f0c11e934cb1956580c345b66, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114997651866194130, guid: faf8269f0c11e934cb1956580c345b66,
         type: 2}
@@ -532,6 +552,51 @@ Prefab:
       propertyPath: brain
       value: 
       objectReference: {fileID: 1589160855}
+    - target: {fileID: 114997651866194130, guid: faf8269f0c11e934cb1956580c345b66,
+        type: 2}
+      propertyPath: agentParameters.numberOfActionsBetweenDecisions
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114997651866194130, guid: faf8269f0c11e934cb1956580c345b66,
+        type: 2}
+      propertyPath: agentParameters.maxStep
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114296276157539986, guid: faf8269f0c11e934cb1956580c345b66,
+        type: 2}
+      propertyPath: agentParameters.maxStep
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114798180114903518, guid: faf8269f0c11e934cb1956580c345b66,
+        type: 2}
+      propertyPath: agentParameters.maxStep
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114314328120344366, guid: faf8269f0c11e934cb1956580c345b66,
+        type: 2}
+      propertyPath: agentParameters.maxStep
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114296276157539986, guid: faf8269f0c11e934cb1956580c345b66,
+        type: 2}
+      propertyPath: agentParameters.agentCameras.Array.data[0]
+      value: 
+      objectReference: {fileID: 489340228}
+    - target: {fileID: 114997651866194130, guid: faf8269f0c11e934cb1956580c345b66,
+        type: 2}
+      propertyPath: agentParameters.agentCameras.Array.data[0]
+      value: 
+      objectReference: {fileID: 489340228}
+    - target: {fileID: 114314328120344366, guid: faf8269f0c11e934cb1956580c345b66,
+        type: 2}
+      propertyPath: agentParameters.agentCameras.Array.data[0]
+      value: 
+      objectReference: {fileID: 489340228}
+    - target: {fileID: 114798180114903518, guid: faf8269f0c11e934cb1956580c345b66,
+        type: 2}
+      propertyPath: agentParameters.agentCameras.Array.data[0]
+      value: 
+      objectReference: {fileID: 489340228}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: faf8269f0c11e934cb1956580c345b66, type: 2}
   m_IsPrefabAsset: 0
@@ -595,7 +660,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &854017780
 GameObject:
@@ -639,8 +704,15 @@ MonoBehaviour:
     timeScale: 1
     targetFrameRate: 60
   resetParameters:
-    resetParameters: []
+    resetParameters:
+    - key: gridSize
+      value: 60
+    - key: percentObstacles
+      value: 0.025
+    - key: numberPoint
+      value: 200
   Player: {fileID: 1479240593}
+  gridSize: 60
 --- !u!4 &854017782
 Transform:
   m_ObjectHideFlags: 0
@@ -653,7 +725,7 @@ Transform:
   m_Children:
   - {fileID: 1589160854}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &854017783
 MonoBehaviour:
@@ -671,11 +743,8 @@ MonoBehaviour:
     type: 2}
   pointSourcePrefab: {fileID: 4231862470301764, guid: f6ffbf903028f5c4e93a51dc426a360b,
     type: 2}
-  mapSize: {x: 60, y: 60}
-  pointSourceNumber: 200
   outlinePercent: 0.018
-  obstaclePercent: 0.025
---- !u!114 &915376196
+--- !u!114 &1087524621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -683,21 +752,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41e9bda8f3cf1492fa74926a530f6f70, type: 3}
-  m_Name: (Clone)(Clone)(Clone)(Clone)
+  m_Script: {fileID: 11500000, guid: 943466ab374444748a364f9d6c3e2fe2, type: 3}
+  m_Name: (Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
   m_EditorClassIdentifier: 
   broadcast: 1
-  keyContinuousPlayerActions: []
-  axisContinuousPlayerActions: []
-  discretePlayerActions:
-  - key: 276
-    branchIndex: 0
-    value: 1
-  - key: 275
-    branchIndex: 0
-    value: 2
-  brain: {fileID: 1589160855}
---- !u!114 &951514718
+  brain: {fileID: 0}
+--- !u!114 &1171234233
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -706,7 +766,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b23992c8eb17439887f5e944bf04a40, type: 3}
-  m_Name: (Clone)(Clone)(Clone)(Clone)
+  m_Name: (Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
   m_EditorClassIdentifier: 
   broadcast: 1
   graphModel: {fileID: 0}
@@ -721,18 +781,6 @@ MonoBehaviour:
   ActionPlaceholderName: action
   PreviousActionPlaceholderName: prev_action
   brain: {fileID: 1589160855}
---- !u!114 &1202743389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35813a1be64e144f887d7d5f15b963fa, type: 3}
-  m_Name: (Clone)(Clone)(Clone)(Clone)
-  m_EditorClassIdentifier: 
-  brain: {fileID: 1589160855}
 --- !u!1 &1479240589
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,6 +793,7 @@ GameObject:
   - component: {fileID: 1479240591}
   - component: {fileID: 1479240590}
   - component: {fileID: 1479240594}
+  - component: {fileID: 1479240595}
   m_Layer: 0
   m_Name: RiderAgent
   m_TagString: agent
@@ -818,7 +867,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1479240594
 MonoBehaviour:
@@ -840,7 +889,44 @@ MonoBehaviour:
     onDemandDecision: 1
     numberOfActionsBetweenDecisions: 1
   timeBetweenDecisionsAtInference: 0.15
-  _walkSpeed: 1
+  _walkSpeed: 10
+--- !u!54 &1479240595
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1479240589}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1498282015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41e9bda8f3cf1492fa74926a530f6f70, type: 3}
+  m_Name: (Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  broadcast: 1
+  keyContinuousPlayerActions: []
+  axisContinuousPlayerActions: []
+  discretePlayerActions:
+  - key: 276
+    branchIndex: 0
+    value: 1
+  - key: 275
+    branchIndex: 0
+    value: 2
+  brain: {fileID: 1589160855}
 --- !u!1 &1553342942
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,7 +1043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brainParameters:
-    vectorObservationSize: 0
+    vectorObservationSize: 1
     numStackedVectorObservations: 1
     vectorActionSize: 03000000
     cameraResolutions:
@@ -969,12 +1055,12 @@ MonoBehaviour:
     vectorActionSpaceType: 0
   brainType: 0
   CoreBrains:
-  - {fileID: 915376196}
-  - {fileID: 1886662477}
-  - {fileID: 1202743389}
-  - {fileID: 951514718}
-  instanceID: 18394
---- !u!114 &1886662477
+  - {fileID: 1498282015}
+  - {fileID: 1087524621}
+  - {fileID: 1876527835}
+  - {fileID: 1171234233}
+  instanceID: 18028
+--- !u!114 &1876527835
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -982,8 +1068,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 943466ab374444748a364f9d6c3e2fe2, type: 3}
-  m_Name: (Clone)(Clone)(Clone)(Clone)
+  m_Script: {fileID: 11500000, guid: 35813a1be64e144f887d7d5f15b963fa, type: 3}
+  m_Name: (Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
   m_EditorClassIdentifier: 
-  broadcast: 1
-  brain: {fileID: 0}
+  brain: {fileID: 1589160855}

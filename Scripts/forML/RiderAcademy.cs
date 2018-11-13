@@ -8,6 +8,8 @@ public class RiderAcademy : Academy {
 	[SerializeField] Transform Player;	
 	TileMapGenerator instance;
 
+	public int gridSize;
+
 	void Awake()
 	{
 		instance = GetComponent<TileMapGenerator>();
@@ -15,7 +17,10 @@ public class RiderAcademy : Academy {
 
 	//Initializing the game world
 	private void SetEnvironment(){
-		instance.StartGenerateMap();
+
+		instance.StartGenerateMap((int)resetParameters["gridSize"],
+			(float)resetParameters["percentObstacles"] ,
+			(int)resetParameters["numberPoint"] );
 		
 		Player.transform.position = new Vector3(.5f,.6f,.5f);
 		Player.transform.rotation = Quaternion.identity;
@@ -23,16 +28,14 @@ public class RiderAcademy : Academy {
 	}
 
 	public override void InitializeAcademy(){
-		
+		gridSize = (int)resetParameters["gridSize"];
+		SetEnvironment();
 
 
 	}
 
 	public override void AcademyReset(){
-		instance.StartGenerateMap();
-		
-		Player.transform.position = new Vector3(.5f,.6f,.5f);
-		Player.transform.rotation = Quaternion.identity;
+		SetEnvironment();
 
 	}
 
