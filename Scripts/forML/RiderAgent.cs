@@ -147,7 +147,7 @@ public class RiderAgent : Agent {
             if (blockTest.Where(col => col.gameObject.CompareTag("pit")).ToArray().Length == 1){
                 Debug.Log("pit");
             Done();
-            SetReward(-3f);
+            SetReward(-10f);
             }
         }
 			
