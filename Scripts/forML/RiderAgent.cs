@@ -38,6 +38,10 @@ public class RiderAgent : Agent {
 
     public override void CollectObservations(){
         AddVectorObs(gameObject.transform);
+
+        // var positionX = (int) transform.position.x;
+        // var positionZ = (int) transform.position.z;
+        // var maxPosition = academy.gridSize - 1;
     }
 
 
@@ -88,16 +92,6 @@ public class RiderAgent : Agent {
         WaitTimeInference();
 
         Vector3 localMove = targetMoveAmount* Time.fixedDeltaTime;
-
-        Collider[] blockTest = Physics.OverlapBox(_rigidBody.position + localMove, new Vector3(0.3f, 0.3f, 0.3f));
-
-        if (blockTest.Where(col => col.gameObject.CompareTag("goal")).ToArray().Length == 1){
-            SetReward(1f);
-        }
-        if (blockTest.Where(col => col.gameObject.CompareTag("pit")).ToArray().Length == 1){
-            Done();
-            SetReward(-1f);
-        }
         	
         //Vector3 localMove = transform.TransformDirection(targetMoveAmount) * Time.fixedDeltaTime;
 		_rigidBody.MovePosition(_rigidBody.position + localMove);
@@ -127,11 +121,24 @@ public class RiderAgent : Agent {
 		
 		Quaternion destRot = rot * transform.localRotation;
 
-		transform.rotation = Quaternion.Slerp(rot,destRot,1 );
+		transform.rotation = Quaternion.Slerp(rot,destRot,2 );
 
 	}
 
     private void OnCollisionEnter(Collision other) {
+        //Debug.Log("CollisionEnter");
+        Collider[] blockTest = Physics.OverlapBox(transform.position+transform.forward*.4f, new Vector3(0.3f, 0.3f, 0.3f));
+
+        if (blockTest.Where(col => col.gameObject.CompareTag("goal")).ToArray().Length == 1){
+            Debug.Log("point");
+            SetReward(1f);
+        }
+        if (blockTest.Where(col => col.gameObject.CompareTag("pit")).ToArray().Length == 1){
+            Debug.Log("pit");
+            Done();
+            SetReward(-1f);
+        }
+
 		if (other.collider.GetComponent<PointSource>())
 			other.collider.GetComponent<PointSource>().AddScore();
 

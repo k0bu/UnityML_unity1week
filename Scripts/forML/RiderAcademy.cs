@@ -10,10 +10,10 @@ public class RiderAcademy : Academy {
 
 	public int gridSize;
 
-	void Awake()
-	{
-		instance = GetComponent<TileMapGenerator>();
-	}
+	// void Awake()
+	// {
+	// 	instance = GetComponent<TileMapGenerator>();
+	// }
 
 	//Initializing the game world
 	private void SetEnvironment(){
@@ -29,6 +29,7 @@ public class RiderAcademy : Academy {
 
 	public override void InitializeAcademy(){
 		gridSize = (int)resetParameters["gridSize"];
+		instance = GetComponent<TileMapGenerator>();
 		SetEnvironment();
 
 

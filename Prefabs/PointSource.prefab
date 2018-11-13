@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114889960540186810}
   m_Layer: 0
   m_Name: PointSource
-  m_TagString: Untagged
+  m_TagString: goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,14 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6141c7f9301ddc645af8e89d4c4315da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brain: {fileID: 0}
-  agentParameters:
-    agentCameras:
-    - {fileID: 0}
-    maxStep: 0
-    resetOnDone: 1
-    onDemandDecision: 0
-    numberOfActionsBetweenDecisions: 1
 --- !u!135 &135059285791185388
 SphereCollider:
   m_ObjectHideFlags: 1
