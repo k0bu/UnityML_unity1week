@@ -54,15 +54,15 @@ public class RiderAgent : Agent {
         switch (action)
         {
             case noAction:
-                AddReward(-.015f);
+                // AddReward(-.001f);
                 // do nothing
                 break;
             case left:
-                AddReward(1f);
+                AddReward(.2f);
                 inputMinus = true;
                 break;
             case right:
-                AddReward(1f);
+                AddReward(.2f);
                 inputPlus = true;
                 break;
             default:
@@ -104,7 +104,7 @@ public class RiderAgent : Agent {
         
 		
     }
-
+    
     private void PerpendicularRotator() {
 		rotationSpeed = 0;
 		rot = Quaternion.identity;
@@ -137,7 +137,7 @@ public class RiderAgent : Agent {
 
 		if (other.GetComponent<PointSource>()){
             Debug.Log("point");
-            SetReward(4f);
+            SetReward(12f);
             pointCleared.Enqueue(other.gameObject);
             other.GetComponent<PointSource>().AddScore();
         }
@@ -146,8 +146,8 @@ public class RiderAgent : Agent {
 		if(other.GetComponent<Obstacle>()){
             if (blockTest.Where(col => col.gameObject.CompareTag("pit")).ToArray().Length == 1){
                 Debug.Log("pit");
-            Done();
-            SetReward(-20f);
+                Done();
+                SetReward(-2f);
             }
         }
 			
@@ -159,29 +159,23 @@ public class RiderAgent : Agent {
     
     
     // to be implemented by the developer
-    public override void AgentReset()
-    {
+    public override void AgentReset(){
         for(int i = 0; i < pointCleared.Count; i++){
             pointCleared.Dequeue().SetActive(true);
         }
         academy.AcademyReset();
     }
 
-    private void WaitTimeInference()
-    {
-        if (!academy.GetIsInference())
-        {
+    private void WaitTimeInference(){
+        if (!academy.GetIsInference()){
             RequestDecision();
         }
-        else
-        {
-            if (timeSinceDecision >= timeBetweenDecisionsAtInference)
-            {
+        else{
+            if (timeSinceDecision >= timeBetweenDecisionsAtInference){
                 timeSinceDecision = 0f;
                 RequestDecision();
             }
-            else
-            {
+            else{
                 timeSinceDecision += Time.fixedDeltaTime;
             }
         }
