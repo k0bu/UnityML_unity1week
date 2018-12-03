@@ -59,11 +59,11 @@ public class RiderAgent : Agent {
                 // do nothing
                 break;
             case left:
-                AddReward(.02f);
+                AddReward(.001f);
                 inputMinus = true;
                 break;
             case right:
-                AddReward(.02f);
+                AddReward(.001f);
                 inputPlus = true;
                 break;
             default:

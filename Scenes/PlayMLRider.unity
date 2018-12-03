@@ -1186,8 +1186,8 @@ MonoBehaviour:
     resetOnDone: 1
     onDemandDecision: 1
     numberOfActionsBetweenDecisions: 1000
-  timeBetweenDecisionsAtInference: 0.2
-  _walkSpeed: 12
+  timeBetweenDecisionsAtInference: 0.3
+  _walkSpeed: 14
 --- !u!54 &1479240595
 Rigidbody:
   m_ObjectHideFlags: 0
