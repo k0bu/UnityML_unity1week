@@ -89,7 +89,7 @@ public class TileMapGenerator : MonoBehaviour {
 			}
 		}
 		
-		PointSourceGenerator(mapHolder);
+		PointSourceGenerator(mapHolder, obstacleMap);
 		
 	}
 
@@ -131,11 +131,16 @@ public class TileMapGenerator : MonoBehaviour {
 		return targetAccessibleTileCount == accessibleTileCount;
 	}
 
-	private void PointSourceGenerator(Transform mapHolder) {
+	private void PointSourceGenerator(Transform mapHolder, bool[,] obstacleMap) {
 		//shuffled accessibleTileCoords
 		accessibleTileCoords = new Queue<Coord> (FisherYatesShuffle.ShuffleArray (accessibleTileCoords.ToArray (), seed));
 		for (int i = 0; i < pointSourceNumber; i++) {
+
 			Coord randomAccessibleTile = accessibleTileCoords.Dequeue();
+            if (obstacleMap[randomAccessibleTile.x, randomAccessibleTile.y]) {
+                i--;
+                continue;
+            }
             Vector3 pointSourcePosition = CoordToPosition(randomAccessibleTile.x,randomAccessibleTile.y);
             		
             		

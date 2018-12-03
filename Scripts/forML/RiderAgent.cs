@@ -41,6 +41,7 @@ public class RiderAgent : Agent {
 
     public override void CollectObservations(){
         AddVectorObs(gameObject.transform);
+        AddVectorObs(gameObject.transform.forward);
 
         // var positionX = (int) transform.position.x;
         // var positionZ = (int) transform.position.z;
@@ -54,15 +55,15 @@ public class RiderAgent : Agent {
         switch (action)
         {
             case noAction:
-                // AddReward(-.001f);
+                // AddReward(-.01f);
                 // do nothing
                 break;
             case left:
-                AddReward(.2f);
+                AddReward(.02f);
                 inputMinus = true;
                 break;
             case right:
-                AddReward(.2f);
+                AddReward(.02f);
                 inputPlus = true;
                 break;
             default:
@@ -137,7 +138,7 @@ public class RiderAgent : Agent {
 
 		if (other.GetComponent<PointSource>()){
             Debug.Log("point");
-            SetReward(12f);
+            SetReward(10f);
             pointCleared.Enqueue(other.gameObject);
             other.GetComponent<PointSource>().AddScore();
         }
