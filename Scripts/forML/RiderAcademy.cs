@@ -12,16 +12,8 @@ public class RiderAcademy : Academy {
 
 	public int gridSize;
 
-	// void Awake()
-	// {
-	// 	instance = GetComponent<TileMapGenerator>();
-	// }
-
 	//Initializing the game world
 	private void SetEnvironment(){
-
-		
-		
 		Player.transform.position = initialPosition;
 		Player.transform.rotation = Quaternion.identity;
 
@@ -42,15 +34,12 @@ public class RiderAcademy : Academy {
 	}
 
 	public override void AcademyReset(){
+        print("Academy has reset");
 		SetEnvironment();
 
 	}
 
 	public override void AcademyStep(){
-
-
-
-
 
 	}
 

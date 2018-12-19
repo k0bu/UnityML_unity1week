@@ -43,9 +43,6 @@ public class RiderAgent : Agent {
         AddVectorObs(gameObject.transform);
         AddVectorObs(gameObject.transform.forward);
 
-        // var positionX = (int) transform.position.x;
-        // var positionZ = (int) transform.position.z;
-        // var maxPosition = academy.gridSize - 1;
     }
 
 
@@ -55,15 +52,12 @@ public class RiderAgent : Agent {
         switch (action)
         {
             case noAction:
-                // AddReward(-.01f);
                 // do nothing
                 break;
             case left:
-                AddReward(.001f);
                 inputMinus = true;
                 break;
             case right:
-                AddReward(.001f);
                 inputPlus = true;
                 break;
             default:
@@ -76,10 +70,6 @@ public class RiderAgent : Agent {
     private void Update() {
 		
 		hasRotated = false;
-		
-        // Calculate movement:
-        // inputPlus = Input.GetButtonDown("Right");
-        // inputMinus = Input.GetButtonDown("Left");
 
 		PerpendicularRotator();
 	
@@ -87,8 +77,6 @@ public class RiderAgent : Agent {
         var moveDir = transform.forward.normalized;
 		
         targetMoveAmount = moveDir * _walkSpeed;
-        //_moveAmount = Vector3.SmoothDamp(_moveAmount,targetMoveAmount,ref _smoothMoveVelocity,.15f);
-		//print(targetMoveAmount);
 
 		if (hasRotated) {
 			transform.position = new Vector3(Mathf.FloorToInt(transform.position.x) + .5f, transform.position.y, Mathf.FloorToInt(transform.position.z) + .5f);
@@ -99,11 +87,7 @@ public class RiderAgent : Agent {
         WaitTimeInference();
 
         Vector3 localMove = targetMoveAmount* Time.fixedDeltaTime;
-        	
-        //Vector3 localMove = transform.TransformDirection(targetMoveAmount) * Time.fixedDeltaTime;
 		_rigidBody.MovePosition(_rigidBody.position + localMove);
-        
-		
     }
     
     private void PerpendicularRotator() {
@@ -128,7 +112,7 @@ public class RiderAgent : Agent {
 		
 		Quaternion destRot = rot * transform.localRotation;
 
-		transform.rotation = Quaternion.Slerp(rot,destRot,2 );
+		transform.rotation = Quaternion.Slerp(rot,destRot,3 );
 
 	}
 
@@ -138,7 +122,7 @@ public class RiderAgent : Agent {
 
 		if (other.GetComponent<PointSource>()){
             Debug.Log("point");
-            SetReward(10f);
+            SetReward(25f);
             pointCleared.Enqueue(other.gameObject);
             other.GetComponent<PointSource>().AddScore();
         }
@@ -146,9 +130,9 @@ public class RiderAgent : Agent {
 
 		if(other.GetComponent<Obstacle>()){
             if (blockTest.Where(col => col.gameObject.CompareTag("pit")).ToArray().Length == 1){
-                Debug.Log("pit");
+                Debug.Log("Agent hit obstacle");
                 Done();
-                SetReward(-2f);
+                SetReward(-4f);
             }
         }
 			
